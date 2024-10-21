@@ -15,7 +15,7 @@ jobs:
 
       - name: Create .env file
         run: |
-          echo "${{ secrets.SERVICES }}" > .env 
+          echo "${{ secrets.SERVICE }}" > .env && echo "\nGITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}" >> .env
           cat .env
 
       - name: Build image
