@@ -15,16 +15,20 @@ jobs:
 
       - name: Create .env file
         run: |
-          echo "SERVICES=${{ secrets.SERVICES }}" > .env
+          echo "SERVICES=${{ secrets.SERVICES }}" > .env &&
+          cat .env
+
+      - name: Build image
+        run: docker compose build --no-cache
 
       - name: Download and Save CSV files
-        run: docker compose -f docker-compose.yaml up --build -d
+        run: docker compose up
 
       - name: Commit and push the files
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           rm .gitignore
-          git add ./services/*.csv
+          git add /usr/src/app/services/*.csv
           git commit -m "Daily dataset backup."
           git push
