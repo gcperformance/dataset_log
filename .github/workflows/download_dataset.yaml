@@ -15,7 +15,7 @@ jobs:
 
       - name: Create .env file
         run: |
-          echo "${{ secrets.SERVICES }}" > .env &&
+          echo "${{ secrets.SERVICES }}" > .env 
           cat .env
 
       - name: Build image
@@ -29,6 +29,6 @@ jobs:
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           rm .gitignore
-          git add /usr/src/app/services/*.csv
+          git add ./services/*.csv
           git commit -m "Daily dataset backup."
           git push
