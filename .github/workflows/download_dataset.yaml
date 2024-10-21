@@ -15,7 +15,7 @@ jobs:
 
       - name: Download and Save CSV files
         run: |
-          docker-compose -f docker-compose.yaml up --build -d
+          docker compose -f docker-compose.yaml up --build -d
         env:
           SERVICES: ${{ secrets.SERVICES }}
 
