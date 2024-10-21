@@ -1,0 +1,11 @@
+services:
+  dataset_log:
+    build: .
+    container_name: dataset_log
+    working_dir: /usr/src/app
+    volumes:
+      - ./app:/usr/src/app  
+    env_file:
+      - ./app/.env
+    command: python backup_datasets.py
+
