@@ -15,7 +15,7 @@ jobs:
 
       - name: Create .env file
         run: |
-          echo "SERVICES=${{ secrets.SERVICES }}" > .env &&
+          echo "${{ secrets.SERVICES }}" > .env &&
           cat .env
 
       - name: Build image
